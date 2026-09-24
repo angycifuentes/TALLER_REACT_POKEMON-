@@ -2,62 +2,60 @@ import React from 'react';
 import { usePokemon } from '../context/pokemonContext';
 
 export const InventarioPokemon: React.FC = () => {
-    const { entrenadorActivo , eliminarPokemonDeMochila, actualizarFavorito, mochilaActual} = usePokemon();
-    
+  const { entrenadorActivo, eliminarPokemon, actualizarFavorito, mochilaActual } = usePokemon();
 
-    if(!entrenadorActivo){
-        return(
-        <div>
-            <h3> NO HAY ENTRENADORES</h3>
-            <p> Por favor asigne <strong>entrenador activo</strong> o registre un entrenador </p>
-        </div>
-        );
+  if (!entrenadorActivo) {
+    return (
+      <div>
+        <h3>NO HAY ENTRENADORES</h3>
+        <p>Por favor asigne <strong>entrenador activo</strong> o registre un entrenador</p>
+      </div>
+    );
+  }
 
-    }
-
-
-return (
-<div className='form-container'>
-
-    <header>
+  return (
+    <div className="form-container">
+      <header>
         <h2>Mochila de {entrenadorActivo.nombreCompleto}</h2>
-    </header>
-    <div className ="grid-mochila">
+      </header>
+      <div className="grid-mochila">
         {mochilaActual.length > 0 ? (
-            mochilaActual.map( (poke , index) => (
-                <div key ={poke.id} className={`tarjeta-item ${poke.esFavorito ? 'tarjeta-favorita' :''}`}>
+          mochilaActual.map((poke, index) => (
+            <div key={poke.id} className={`tarjeta-item ${poke.esFavorito ? 'tarjeta-favorita' : ''}`}>
+              <span>
+                #{index + 1} de {mochilaActual.length}
+              </span>
 
-                    <span>
-                        #{index + 1} de {mochilaActual.length}
-                    </span>
+              <img src={poke.image} alt={poke.name} />
+              <h4>{poke.name}</h4>
+              <p>{poke.type}</p>
 
-                    <img src={poke.image} />
-                    <h4>{poke.name}</h4>
-                    <p>{poke.type}</p>
-
-                    <div className="panel-botones">
-                        <button className={`btn-fav ${poke.esFavorito ? 'fav-activo' : ''}`}
-                        onClick={() => actualizarFavorito(poke.id)}>
-                            {poke.esFavorito ? ' 🌟⭐Favorito' : ' 🌟Marcar'}
-                        </button>
-                        <button type="button" className='btn-eliminar'
-                        onClick={() => eliminarPokemonDeMochila(poke.id)}>Liberar o Soltar</button> 
-                    </div>
-                </div>
-            ))
-        ) : (
-            <div>
-                <p> Tu mochila esta vacia actualmente.</p>
-                <p> ¡Vaya y capture pokemon, papi! </p>
-
+              <div className="panel-botones">
+                <button
+                  className={`btn-fav ${poke.esFavorito ? 'fav-activo' : ''}`}
+                  onClick={() => actualizarFavorito(poke.id)}
+                >
+                  {poke.esFavorito ? ' 🌟⭐Favorito' : ' 🌟Marcar'}
+                </button>
+                <button
+                  type="button"
+                  className="btn-eliminar"
+                  onClick={() => eliminarPokemon(poke.id)}
+                >
+                  Liberar o Soltar
+                </button>
+              </div>
             </div>
-        )
-        
-        } 
+          ))
+        ) : (
+          <div>
+            <p>Tu mochila está vacía actualmente.</p>
+            <p>¡Vaya y capture pokémon!</p>
+          </div>
+        )}
+      </div>
     </div>
-    
-</div>
-);
+  );
 };
 
 
