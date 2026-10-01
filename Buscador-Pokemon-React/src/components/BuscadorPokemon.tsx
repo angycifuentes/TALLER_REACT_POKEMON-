@@ -11,16 +11,16 @@ export const BuscadorPokemon: React.FC = () => {
     const [mensajeError, setMensajeError] = useState<string | null>(null);
     const [cargando, setCargando] = useState(false);
 
-    
     const obtenerColorPorTipo = (tipo: string) => {
-        const t = tipo.toLowerCase();
+        if (!tipo) return '#ffffff';
+        const t = tipo.trim().toLowerCase();
         if (t === 'bug') return '#483D8B';       
         if (t === 'ghost') return '#0000CD';     
         if (t === 'fire') return '#f80b0b';
         if (t === 'water') return '#024aff';
         if (t === 'grass') return '#14f539';
         if (t === 'electric') return '#e2e60c';
-        return '#55080c';
+        return '#ffffff';
     };
 
     const buscarPokemon = async (e: React.FormEvent) => {
@@ -65,7 +65,6 @@ export const BuscadorPokemon: React.FC = () => {
             guardarPokemonMochila(pokemonActual);
             alert(`El Pokemon ${pokemonActual.name} fue guardado en la mochila de ${entrenadorActivo?.nombreCompleto}`);
             
-            
             navigate('/inventario'); 
         }
     };
@@ -101,7 +100,7 @@ export const BuscadorPokemon: React.FC = () => {
                 <div 
                     className="pokemon-card"
                     style={{
-                        backgroundColor: obtenerColorPorTipo(pokemonActual.type),
+                        backgroundColor: '#1e1e1e', 
                         padding: '16px',
                         borderRadius: '12px',
                         marginTop: '16px',
@@ -113,11 +112,11 @@ export const BuscadorPokemon: React.FC = () => {
                     <p>
                         Elemento:{' '}
                         <span style={{
-                            backgroundColor: 'rgba(0, 0, 0, 0.4)',
-                            color: 'white',
+                            backgroundColor: '#000000',
+                            color: obtenerColorPorTipo(pokemonActual.type), 
                             padding: '4px 10px',
                             borderRadius: '10px',
-                            border: '1px solid #ffffff',
+                            border: `2px solid ${obtenerColorPorTipo(pokemonActual.type)}`, 
                             fontWeight: 'bold'
                         }}>
                             {pokemonActual.type.toUpperCase()}

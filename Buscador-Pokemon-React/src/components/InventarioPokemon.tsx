@@ -4,22 +4,22 @@ import { usePokemon } from '../context/pokemonContext';
 export const InventarioPokemon: React.FC = () => {
   const { entrenadorActivo, eliminarPokemon, actualizarFavorito, mochilaActual } = usePokemon();
 
-  // Función para asignar el color dinámico según el tipo del Pokémon
+  
   const obtenerColorPorTipo = (tipo: string) => {
     if (!tipo) return '#ffffff';
-    const t = tipo.toLowerCase();
-    if (t === 'bug') return '#483D8B';       // Requerimiento Punto 2a: BUG
-    if (t === 'ghost') return '#0000CD';     // Requerimiento Punto 2b: GHOST
+    const t = tipo.trim().toLowerCase();
+    if (t === 'bug') return '#483D8B';       
+    if (t === 'ghost') return '#0000CD';    
     if (t === 'fire') return '#f80b0b';
     if (t === 'water') return '#024aff';
     if (t === 'grass') return '#14f539';
     if (t === 'electric') return '#e2e60c';
-    return '#2a2a2a'; // Color por defecto si es otro tipo
+    return '#ffffff'; 
   };
 
   if (!entrenadorActivo) {
     return (
-      <div>
+      <div className="form-container">
         <h3>NO HAY ENTRENADORES</h3>
         <p>Por favor asigne <strong>entrenador activo</strong> o registre un entrenador</p>
       </div>
@@ -38,7 +38,7 @@ export const InventarioPokemon: React.FC = () => {
               key={poke.id} 
               className={`tarjeta-item ${poke.esFavorito ? 'tarjeta-favorita' : ''}`}
               style={{
-                backgroundColor: obtenerColorPorTipo(poke.type),
+                backgroundColor: '#1e1e1e', 
                 color: 'white',
                 padding: '16px',
                 borderRadius: '12px',
@@ -54,9 +54,11 @@ export const InventarioPokemon: React.FC = () => {
               <p>
                 Tipo:{' '}
                 <span style={{
-                  backgroundColor: 'rgba(0, 0, 0, 0.4)',
-                  padding: '2px 8px',
+                  backgroundColor: '#000000',
+                  color: obtenerColorPorTipo(poke.type), 
+                  padding: '4px 10px',
                   borderRadius: '6px',
+                  border: `2px solid ${obtenerColorPorTipo(poke.type)}`, 
                   fontWeight: 'bold'
                 }}>
                   {poke.type.toUpperCase()}
