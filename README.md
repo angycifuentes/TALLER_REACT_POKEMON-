@@ -2,7 +2,7 @@
 
 ¿Que es el proyecto? 
 
-Este taller de  Pokémon con React es una aplicación web interactiva desarrollada con React, TypeScript y Vite. La aplicación permite a los usuarios buscar Pokémon en tiempo real, gestionar un inventario o colección personal de Pokémon y registrar datos de usuario dentro del sistema.   Para poder agregar y gestionar Pokémon en el inventario, es requisito obligatorio contar con un entrenador registrado; de lo contrario, el sistema no permitirá ingresar ningún Pokémon al inventario.
+Este taller de  Pokémon con React es una aplicación web interactiva. La aplicación permite a los usuarios buscar Pokémon en tiempo real, gestionar un inventario o colección personal de Pokémon y registrar datos de usuario dentro del sistema.   Para poder agregar y gestionar Pokémon en el inventario, es requisito obligatorio contar con un entrenador registrado; de lo contrario, el sistema no permitirá ingresar ningún Pokémon al inventario.
 
 La aplicación consta de 3 páginas principales:
 
