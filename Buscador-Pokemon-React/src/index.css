@@ -82,6 +82,7 @@ h1 {
     margin: 20px 0;
   }
 }
+
 h2 {
   font-size: 24px;
   line-height: 118%;
@@ -91,6 +92,7 @@ h2 {
     font-size: 20px;
   }
 }
+
 p {
   margin: 0;
 }
@@ -108,4 +110,87 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+main, .container {
+  padding: 24px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.registro-container {
+  max-width: 420px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.registro-container input {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-h);
+  font-size: 16px;
+}
+
+.registro-container button {
+  padding: 12px;
+  background-color: var(--accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.registro-container button:hover {
+  opacity: 0.9;
+}
+
+.pokemon-card {
+  max-width: 320px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  transition: transform 0.2s ease;
+}
+
+.pokemon-card:hover {
+  transform: translateY(-4px);
+}
+
+.pokemon-card img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+}
+
+.pokemon-card button {
+  margin-top: 12px;
+  padding: 10px 18px;
+  background-color: #ffffff;
+  color: #08060d;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.inventario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
 }
